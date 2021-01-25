@@ -2,11 +2,12 @@
   "name": "monsters-rolodex",
   "version": "0.1.0",
   "private": true,
-  "proxy":"http://localhost:5000",
+  "proxy": "http://localhost:5000",
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.8",
     "@testing-library/react": "^11.2.2",
     "@testing-library/user-event": "^12.6.0",
+    "axios": "^0.21.1",
     "firebase": "^8.2.2",
     "lodash.memoize": "^4.1.2",
     "node-sass": "^4.14.1",
