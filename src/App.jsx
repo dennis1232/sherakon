@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useEffect } from 'react';
 import { HashRouter as Redirect, Route, Switch } from 'react-router-dom'
 import { connect } from 'react-redux';
 import './App.css';
@@ -10,38 +10,33 @@ import Sign from './pages/sign/sign.component';
 import { createStructuredSelector } from 'reselect';
 import { selectCurrentUser } from './redux/user/user.selectors';
 import { checkUserSession } from './redux/user/user.actions';
-class App extends Component {
-  unsubscribeFromAuth = null
-  componentDidMount() {
-    const {checkUserSession} =this.props
-    checkUserSession()
-  }
-  componentWillUnmount() {
-    this.unsubscribeFromAuth = null
-  }
+const App = ({ checkUserSession, currentUser }) => {
 
-  render() {
-    return (
-      <div className="App">
-        <Header />
-        <Switch>
-          <Route exact path='/' component={HomePage}></Route>
-          <Route path='/shop' component={ShopPage}></Route>
-          <Route exact path='/signin' render={() => (this.props.currentUser) ? (<Redirect to='/' />) : (<Sign />)}></Route>
-          <Route exact path='/checkout' component={CheckOutPage} />
-        </Switch>
-      </div>
-    );
-  }
+  useEffect(() => {
+    checkUserSession()
+  }, [checkUserSession])
+
+
+  return (
+    <div className="App">
+      <Header />
+      <Switch>
+        <Route exact path='/' component={HomePage}></Route>
+        <Route path='/shop' component={ShopPage}></Route>
+        <Route exact path='/signin' render={() => (currentUser) ? (<Redirect to='/' />) : (<Sign />)}></Route>
+        <Route exact path='/checkout' component={CheckOutPage} />
+      </Switch>
+    </div>
+  );
 }
 
 const mapStateToProps = createStructuredSelector({
   currentUser: selectCurrentUser,
 })
 
-const mapDispatchToProps =dispatch=>({
-  checkUserSession: ()=>dispatch(checkUserSession())
+const mapDispatchToProps = dispatch => ({
+  checkUserSession: () => dispatch(checkUserSession())
 })
 
 
-export default connect(mapStateToProps,mapDispatchToProps)(App)
+export default connect(mapStateToProps, mapDispatchToProps)(App)
