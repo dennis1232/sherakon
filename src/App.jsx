@@ -5,8 +5,8 @@ import './App.css';
 import { GlobalStyle } from './global.styles';
 
 import Header from './components/header/header.component';
+import Footer from './components/footer/footer';
 import Spinner from './components/spinner/spinner.componnet';
-
 import { createStructuredSelector } from 'reselect';
 import { selectCurrentUser } from './redux/user/user.selectors';
 import { checkUserSession } from './redux/user/user.actions';
@@ -38,6 +38,7 @@ const App = ({ checkUserSession, currentUser }) => {
           <Route exact path='/checkout' component={CheckOutPage}/>
         </Suspense>
       </Switch>
+      {/* <Footer></Footer> */}
     </div>
   );
 }

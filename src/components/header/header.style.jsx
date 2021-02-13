@@ -11,7 +11,7 @@ justify-content: space-between;
 margin-bottom: 25px;
 @media (max-width: 800px){
     height: 60px;
-    padding: 10px;
+    padding: 10px 5px;
     margin-bottom:20px;
 
 }
@@ -34,12 +34,17 @@ align-items: center;
 justify-content: flex-end;
 
 
+
 @media (max-width: 800px){
     width:80%;
     
 }
 `
 export const OptionLink = styled(Link)`
-padding: 10px 15px;
+padding: 0px 15px;
 cursor: pointer;
+&:hover{
+    // color:#2EFBEE;
+    font-weight:bolder;
+}
 `

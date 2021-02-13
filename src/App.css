@@ -1,6 +1,9 @@
+html{
+    background-image: linear-gradient(to top, #fcffff, #fcffff, #fcffff, #fcffff, #fcffff, #f9ffff, #f5ffff, #f2ffff, #eaffff, #e2fffe, #d9fffd, #d1fffc);}
 body{
     font-family: 'Open Sans Condensed';
-    padding: 20px 60px
+    padding: 20px 60px;
+    min-height: 100vh;
 }
 a{
     text-decoration: none;
